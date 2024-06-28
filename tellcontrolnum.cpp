@@ -82,37 +82,51 @@ void send_controlnum(const std::string& targetIP, int targetPort, int pixelNum) 
 
     // Port 1 pixel number
     // command.push_back(0x00);
-    // command.push_back(0x01);
+    // command.push_back(0x00);
     command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
     command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
 
     // Port 2 pixel number
-    command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
-    command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    // command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
+    // command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    command.push_back(0x00);
+    command.push_back(0x00);
 
     // Port 3 pixel number
-    command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
-    command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    // command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
+    // command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    command.push_back(0x00);
+    command.push_back(0x00);
 
     // Port 4 pixel number
-    command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
-    command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    // command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
+    // command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    command.push_back(0x00);
+    command.push_back(0x00);
 
     // Port 5 pixel number
-    command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
-    command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    // command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
+    // command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    command.push_back(0x00);
+    command.push_back(0x00);
 
     // Port 6 pixel number
-    command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
-    command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    // command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
+    // command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    command.push_back(0x00);
+    command.push_back(0x00);
 
     // Port 7 pixel number
-    command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
-    command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    // command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
+    // command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    command.push_back(0x00);
+    command.push_back(0x00);
 
     // Port 8 pixel number
-    command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
-    command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    // command.push_back(static_cast<unsigned char>((pixelNum >> 8) & 0xFF));
+    // command.push_back(static_cast<unsigned char>(pixelNum & 0xFF));
+    command.push_back(0x00);
+    command.push_back(0x00);
 
     // Total length
     command.push_back(0x00);
