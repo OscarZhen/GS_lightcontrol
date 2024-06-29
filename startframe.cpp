@@ -61,11 +61,11 @@ void send_startframe(const std::string& targetIP, int targetPort) {
     }
 
     // print the message in hexadecimal
-    std::cout << "Start Frame message: ";
-    for (auto c : command) {
-        std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(c) << " ";
-    }
-    std::cout << std::endl;
+    // std::cout << "Start Frame message: ";
+    // for (auto c : command) {
+    //     std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(c) << " ";
+    // }
+    // std::cout << std::endl;
 
     closesocket(sockfd);
     WSACleanup();

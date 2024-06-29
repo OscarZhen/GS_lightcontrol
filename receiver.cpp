@@ -1,8 +1,8 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <Winsock2.h>
 #include <WS2tcpip.h>
-
 
 void receiveMessage(int localPort, int bufferSize) {
     WSADATA wsaData;
@@ -36,17 +36,28 @@ void receiveMessage(int localPort, int bufferSize) {
 
     std::cout << "Waiting for broadcast message..." << std::endl;
 
-    int numBytesReceived = recv(sockfd, buffer, bufferSize - 1, 0);
-    if (numBytesReceived == SOCKET_ERROR) {
-        std::cerr << "Failed to receive broadcast message" << std::endl;
-        closesocket(sockfd);
-        WSACleanup();
-        return;
+    while (true) {
+        sockaddr_in senderAddr;
+        int senderAddrLen = sizeof(senderAddr);
+
+        int numBytesReceived = recvfrom(sockfd, buffer, bufferSize - 1, 0, (struct sockaddr*)&senderAddr, &senderAddrLen);
+        if (numBytesReceived == SOCKET_ERROR) {
+            std::cerr << "Failed to receive broadcast message" << std::endl;
+            closesocket(sockfd);
+            WSACleanup();
+            return;
+        }
+
+        std::cout << "Received message from " << inet_ntoa(senderAddr.sin_addr) << ": ";
+
+        for (int i = 0; i < numBytesReceived; i++) {
+            // Print each byte in hexadecimal format with leading zeros
+            std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(static_cast<unsigned char>(buffer[i])) << " ";
+        }
+        std::cout << std::dec << std::endl;  // Reset to decimal format
+
+        break;  // Terminate the loop after receiving a message
     }
-
-    std::string message = buffer;
-
-    std::cout << "Received message: " << message << std::endl;
 
     closesocket(sockfd);
     WSACleanup();

@@ -17,4 +17,6 @@ void send_endframe(const std::string& targetIP, int targetPort);
 
 void receiveMessage(int localPort, int bufferSize);
 
+void send_randomlight22(const std::string& targetIP, int targetPort, int pixelNum);
+
 #endif
