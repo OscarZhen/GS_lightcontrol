@@ -6,7 +6,7 @@ int main() {
     // const std::string targetIP = "169.254.169.94";
     int targetPort = 4628;
     int localPort = 8200;
-    int bufferSize = 1024;
+    int bufferSize = 1500;
 
     // send_broadcast(targetPort);
 
@@ -19,7 +19,8 @@ int main() {
         send_randomlight22(targetIP, targetPort, 4);
 
         send_endframe(targetIP, targetPort);
-
+        
+        receiveMessage(localPort, bufferSize);
         Sleep(1000);
     }
 
